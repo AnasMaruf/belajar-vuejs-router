@@ -11,6 +11,7 @@ console.log(search);
 
 watchEffect(() => {
   router.replace({
+    name: "product-search",
     query: {
       product: search.value,
     },
