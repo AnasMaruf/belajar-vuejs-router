@@ -1,15 +1,14 @@
 <script setup>
 import { ref, watchEffect } from "vue";
-import { useRoute } from "vue-router";
 
+const { id } = defineProps(["id"]);
 const loaded = ref(false);
 const error = ref(false);
 const product = ref(null);
-const route = useRoute();
 
 watchEffect(() => {
-  if (route.params.id) {
-    fetch(`/api/products/${route.params.id}.json`)
+  if (id) {
+    fetch(`/api/products/${id}.json`)
       .then((res) => res.json())
       .then((data) => {
         product.value = data;
@@ -24,7 +23,7 @@ watchEffect(() => {
 });
 </script>
 <template>
-  <template v-if="route.params.id">
+  <template v-if="id">
     <div v-if="loaded">
       <h1>{{ product.id }} - {{ product.name }}</h1>
       <p>Price: {{ product.price }}</p>
