@@ -19,6 +19,13 @@ const router = createRouter({
     {
       path: "/",
       component: Home,
+      props: {
+        title: "Home Page",
+      },
+    },
+    {
+      path: "/home",
+      redirect: "/",
     },
     {
       path: "/about",
@@ -28,6 +35,17 @@ const router = createRouter({
       path: "/products/search",
       component: ProductSearch,
       name: "product-search",
+    },
+    {
+      path: "/products/search/:keyword",
+      redirect: (route) => {
+        return {
+          name: "product-search",
+          query: {
+            product: route.params.keyword,
+          },
+        };
+      },
     },
     {
       path: "/products/:id(\\d+)?",
