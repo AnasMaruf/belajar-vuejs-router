@@ -1,6 +1,11 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import { createRouter, createWebHistory } from "vue-router";
+import {
+  createMemoryHistory,
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+} from "vue-router";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 import ProductDetail from "./components/ProductDetail.vue";
